@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B80789B-36BA-4AB9-8C43-94FC4A3B536E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>System</RootNamespace>
+    <AssemblyName>System.Web.Mvc2Ex</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug.4\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\System.Web.Mvc2Ex.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release.4\</OutputPath>
+    <DefineConstants>TRACE;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release.4\System.Web.Mvc2Ex.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v3.5'">
+    <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net35\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net35\System.CoreEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
+    <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net40\System.CoreEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyRef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\DataAnnotationsModelMetadataProviderEx.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\FieldViewModifierAttributeBase.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\MvcExtensions+FieldViewModifier.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\IInputViewModifier.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\ILabelViewModifier.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\MvcExtensions+ModelMetadata.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\ModelMetadataModifierArguments.cs" />
+    <Compile Include="Web\Mvc+DataAnnotations\ModelMetadataModifierAttributeBase.cs" />
+    <Compile Include="Web\Mvc+Dynamic\ControllerExtensions.cs" />
+    <Compile Include="Web\Mvc+Dynamic\Html\ChildActionExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\Html\FormExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\RedirectToRouteResultEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\HtmlHelperEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\Html\LinkExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\RouteValuesHelpers.cs" />
+    <Compile Include="Web\Mvc+Dynamic\UrlHelperEx.cs" />
+    <Compile Include="Web\Mvc+Dynamic\UrlHelperExtensions.cs" />
+    <Compile Include="Web\Mvc+Forms\Html+ViewModifier\InputExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Forms\Html+ViewModifier\LabelExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Forms\Html+ViewModifier\SelectExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Forms\Html+ViewModifier\TextAreaExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Forms\Html\SelectExtensionsEx.cs" />
+    <Compile Include="Web\Mvc+Forms\Html\SelectListLayout.cs" />
+    <Compile Include="Web\Mvc\Html+HtmlTextEditor\IHtmlTextEditor.cs" />
+    <Compile Include="Web\Mvc\Html+HtmlTextEditor\TextAreaExtensionsEx.cs" />
+    <Compile Include="_Unsorted_\Web\Mvc+JQuery\JQueryHtmlHelperExtensions.cs" />
+    <Compile Include="Web\Mvc+Route\MvcRouteExtensions+MvcRouteHandler.cs" />
+    <Compile Include="Web\Mvc+Route\MvcRouteExtensions+RouteCollection.cs" />
+    <Compile Include="Web\Mvc\AreaRegistrationContextEx.cs" />
+    <Compile Include="Web\Mvc\MvcExtensions+HtmlHelper.cs" />
+    <Compile Include="Web\Mvc\Html\ChildActionExtensionsEx.cs" />
+    <Compile Include="Web\Mvc\Html\TabBuilderExtensions.cs" />
+    <Compile Include="Web\Mvc+IndirectView\IndirectViewDirector.cs" />
+    <Compile Include="Web\Mvc+IndirectView\IndirectWebFormViewEngine.cs" />
+    <Compile Include="Web\Mvc+IndirectView\MobileIndirectViewDirector.cs" />
+    <Compile Include="Web\Mvc\MvcExtensions+ModelState.cs" />
+    <Compile Include="Web\Mvc\ObservableResult.cs" />
+    <Compile Include="Web\Mvc\PathHelpers.cs" />
+    <Compile Include="Web\Mvc\ResourceFileStreamResult.cs" />
+    <Compile Include="Web\Mvc\MvcExtensions+TagBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\nuspecs\BclEx-Web.Mvc2.nuspec">
+      <Link>BclEx-Web.Mvc2.nuspec</Link>
+    </None>
+    <None Include="BclEx.4.snk" />
+    <None Include="BclEx.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System.WebEx\System.WebEx.csproj">
+      <Project>{B00BAA8C-C9D5-407D-A922-E6B829370C6C}</Project>
+      <Name>System.WebEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

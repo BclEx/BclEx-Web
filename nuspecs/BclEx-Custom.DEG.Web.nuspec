@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>BclEx-Custom.DEG.Web</id>
+    <version>1.0.0</version>
+    <title>BclEx-Custom.DEG.Web</title>
+    <authors>Contoso</authors>
+    <owners>Contoso</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://docs.bclex.org/bclex-abstract/</projectUrl>
+    <iconUrl>http://docs.bclex.org/bclex-abstract.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DEG custom web parts.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2010</copyright>
+    <tags>bclex</tags>
+    <language>en-US</language>
+    <dependencies>
+      <group>
+        <dependency id="BclEx-Abstract" version="1.0.0" />
+        <dependency id="BclEx-Extend" version="1.0.0" />
+        <dependency id="BclEx-Web" version="1.0.0" />
+        <dependency id="BclEx-Web.Mvc2" version="1.0.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web"  />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="build\3.5\DEG.Web.dll" target="lib\net35" />
+    <file src="build\3.5\DEG.Web.xml" target="lib\net35" />
+    <file src="build\3.5\DEG.Web.Mvc2.dll" target="lib\net35" />
+    <file src="build\3.5\DEG.Web.Mvc2.xml" target="lib\net35" />
+    <file src="build\4.0\DEG.Web.dll" target="lib\net40" />
+    <file src="build\4.0\DEG.Web.xml" target="lib\net40" />
+    <file src="build\4.0\DEG.Web.Mvc2.dll" target="lib\net40" />
+    <file src="build\4.0\DEG.Web.Mvc2.xml" target="lib\net40" />
+    <file src="build\4.0\DEG.Web.Mvc3.dll" target="lib\net40" />
+    <file src="build\4.0\DEG.Web.Mvc3.xml" target="lib\net40" />
+    <file src="src\Custom\DEG.Web\**\*.cs" target="src\DEG.Web" />
+    <file src="src\Custom\DEG.Web.Mvc2\**\*.cs" target="src\DEG.Web.Mvc2" />
+  </files>
+</package>

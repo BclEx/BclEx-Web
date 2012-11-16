@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>BclEx-Web</id>
+    <version>1.0.0</version>
+    <title>BclEx-Web</title>
+    <authors>Contoso</authors>
+    <owners>Contoso</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://docs.bclex.org/bclex-web/</projectUrl>
+    <iconUrl>http://docs.bclex.org/bclex-web.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package contains System.Web extentions.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2010</copyright>
+    <tags>web bclex</tags>
+    <language>en-US</language>
+    <dependencies>
+      <group>
+        <dependency id="BclEx-Abstract" version="1.0.0" />
+        <dependency id="BclEx-Extend" version="1.0.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web"  />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="build\3.5\System.WebEx.dll" target="lib\net35" />
+    <file src="build\3.5\System.WebEx.xml" target="lib\net35" />
+    <file src="build\3.5\Contoso.WebEx.dll" target="lib\net35" />
+    <file src="build\3.5\Contoso.WebEx.xml" target="lib\net35" />
+    <file src="build\3.5\Contoso.Web.Integrate.dll" target="lib\net35" />
+    <file src="build\3.5\Contoso.Web.Integrate.xml" target="lib\net35" />
+    <file src="build\4.0\System.WebEx.dll" target="lib\net40" />
+    <file src="build\4.0\System.WebEx.xml" target="lib\net40" />
+    <file src="build\4.0\Contoso.WebEx.dll" target="lib\net40" />
+    <file src="build\4.0\Contoso.WebEx.xml" target="lib\net40" />
+    <file src="build\4.0\Contoso.Web.Integrate.dll" target="lib\net40" />
+    <file src="build\4.0\Contoso.Web.Integrate.xml" target="lib\net40" />
+    <file src="src\System.WebEx\**\*.cs" target="src\System.WebEx" />
+    <file src="src\Integrations\Contoso.Web.Integrate\**\*.cs" target="src\Contoso.Web.Integrate" />
+  </files>
+</package>

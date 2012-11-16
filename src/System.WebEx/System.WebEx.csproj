@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B00BAA8C-C9D5-407D-A922-E6B829370C6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>System</RootNamespace>
+    <AssemblyName>System.WebEx</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug.4\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\System.WebEx.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release.4\</OutputPath>
+    <DefineConstants>TRACE;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release.4\System.WebEx.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v3.5'">
+    <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net35\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net35\System.CoreEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
+    <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net40\System.CoreEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="+Kludge\Web\HttpRequestKludge.cs" />
+    <Compile Include="+Kludge\Web\HttpEncoderUtility.cs" />
+    <Compile Include="+Kludge\Web\HttpResponseKludge.cs" />
+    <Compile Include="AssemblyRef.cs" />
+    <Compile Include="Web+Activation\Handlers\ActivationModule.cs" />
+    <Compile Include="Web+Routing\IDynamicNode.cs" />
+    <Compile Include="Web+Routing\IDynamicRoutingContext.cs" />
+    <Compile Include="Web+Routing\Routing+Dynamic\DynamicRoute.cs" />
+    <Compile Include="Web+Routing\Routing+Dynamic\SiteMapDynamicRoutingContext.cs" />
+    <Compile Include="Web+Routing\Routing\GenericUrlRoutingHandler.cs" />
+    <Compile Include="Web+Routing\Routing\IRoutablePage.cs" />
+    <Compile Include="Web+Routing\Routing\RouteCollectionExtensions.cs" />
+    <Compile Include="Web+Routing\Routing\RouteEx.cs" />
+    <Compile Include="Web+Routing\Routing\UrlRoutingModuleEx.cs" />
+    <Compile Include="Web+Routing\Routing\WebFormRouteHandler2.cs" />
+    <Compile Include="Web+Routing\Routing\WebFormRouteHandler.cs" />
+    <Compile Include="Web+Routing\Routing\WebFormRouteHandlerExtensions.cs" />
+    <Compile Include="Web+SiteMap\IHaveVirtualUrlSiteMapNode.cs" />
+    <Compile Include="Web+SiteMap\ISiteMapProvider.cs" />
+    <Compile Include="Web+SiteMap\SiteMapLinkNode.cs" />
+    <Compile Include="Web+SiteMap\SiteMapNodeEx.cs" />
+    <Compile Include="Web+SiteMap\SiteMapNodeExExtensions.cs" />
+    <Compile Include="Web+SiteMap\SiteMapProviderExtensions.cs" />
+    <Compile Include="Web+StaticSiteMap\IStaticSiteMapProviderEx.cs" />
+    <Compile Include="Web+StaticSiteMap\IStaticSiteMapProviderExNodeStore.cs" />
+    <Compile Include="Web+StaticSiteMap\IWantUnconstrainedSiteMapNode.cs" />
+    <Compile Include="Web+StaticSiteMap\SiteMapNodePartialProviderExtent.cs" />
+    <Compile Include="Web+StaticSiteMap\SiteMapNodeSeoExtent.cs" />
+    <Compile Include="Web+StaticSiteMap\SiteMapNodeZoneExtent.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+ChildProvider.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+FromBase.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+Observer.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+PartialProvider.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+Scan.cs" />
+    <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx.cs" />
+    <Compile Include="Web\Configuration\WebExSection.cs" />
+    <Compile Include="Web\Configuration\CustomErrorsSectionSyn.cs" />
+    <Compile Include="Web\Configuration\CustomErrorSyn.cs" />
+    <Compile Include="Web\HttpCompressModule.cs" />
+    <Compile Include="Web\HttpContextEx.cs" />
+    <Compile Include="Web\HttpContextExtensions+UriSchema.cs" />
+    <Compile Include="Web\HttpContextExtensions.cs" />
+    <Compile Include="Web\HttpExtensions+HttpCookieCollection.cs" />
+    <Compile Include="Web\HttpExtensions+HttpRequest.cs" />
+    <Compile Include="Web\HttpExtensions+HttpResponse.cs" />
+    <Compile Include="Web\HttpExtensions+HttpServerUtility.cs" />
+    <Compile Include="Patterns\Schema\UriSchemaWebExtensions.cs" />
+    <Compile Include="Web\HttpSessionExProviderBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Security\FormsAuthenticationEx.cs" />
+    <Compile Include="Web\SessionState\HttpSessionStateExtentions.cs" />
+    <Compile Include="Web\SessionState\SessionIDManagerEx.cs" />
+    <Compile Include="Web\UI+ClientScript\AspFormsClientScriptManager.cs" />
+    <Compile Include="Web\UI+ClientScript\ClientScript.cs" />
+    <Compile Include="Web\UI+ClientScript\ClientScriptItemBase.cs" />
+    <Compile Include="Web\UI+ClientScript\ClientScriptManagerEx.cs" />
+    <Compile Include="Web\UI+ClientScript\ClientScriptRepository.cs" />
+    <Compile Include="Web\UI+ClientScript\IClientScriptItemOption.cs" />
+    <Compile Include="Web\UI+ClientScript\IncludeClientScriptItem.cs" />
+    <Compile Include="Web\UI+ClientScript\IncludeForResourceClientScriptItem.cs" />
+    <Compile Include="Web\UI+ClientScript\LiteralClientScriptItem.cs" />
+    <Compile Include="Web\UI+ClientScript\WebControls\ClientScriptEmitter.cs" />
+    <Compile Include="Web\UI+Controls\HtmlControls\HtmlAnchorEx.cs" />
+    <Compile Include="Web\UI+Controls\HtmlControls\HtmlButtonEx.cs" />
+    <Compile Include="Web\UI+Controls\HtmlControls\HtmlImageEx.cs" />
+    <Compile Include="Web\UI+Controls\HtmlControls\HtmlLinkEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\ButtonEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\CheckBoxEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\CheckBoxListEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\DropDownListEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\FileUploadEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\HiddenFieldEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\ImageButtonEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\LabelEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\ListBoxEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\ListControlEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\RadioButtonEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\RadioButtonListEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\TextBoxEx.cs" />
+    <Compile Include="Web\UI+Controls\WebControls\TextBoxEx2.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlAttribute.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+Button.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+Element.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+ElementHtml.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+Html.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+SmartTag.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+Write.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+xButton.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+xForm.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+xFrame.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder+xWrite2.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilder.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilderDivTag.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilderFormTag.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilderOptionType.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlBuilderTableTag.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlTag.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlTextWriterEx.cs" />
+    <Compile Include="Web\UI+HtmlBuilder\HtmlTextWriterExtensions.cs" />
+    <Compile Include="Web\UI+HtmlTextEditor\HtmlTextBoxCommands.cs" />
+    <Compile Include="Web\UI+HtmlTextEditor\IHtmlTextBoxContext.cs" />
+    <Compile Include="Web\UI\CachingUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web+Activation\ActivationManager.cs" />
+    <Compile Include="Web+Activation\ApplicationShutdownMethodAttribute.cs" />
+    <Compile Include="Web+Activation\PostApplicationStartMethodAttribute.cs" />
+    <Compile Include="Web+Activation\PreApplicationStartMethodAttribute.cs" />
+    <Compile Include="Web\UI\IFragmentedControl.cs" />
+    <Compile Include="_Unsorted_\WebResourceRegex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\default.ps1">
+      <Link>default.ps1</Link>
+    </None>
+    <None Include="..\..\nuspecs\BclEx-Web.nuspec">
+      <Link>BclEx-Web.nuspec</Link>
+    </None>
+    <None Include="BclEx.snk" />
+    <None Include="BclEx.4.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

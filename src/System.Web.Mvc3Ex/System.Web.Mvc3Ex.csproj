@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{280147F3-912D-4D1E-9020-62859B3613DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>System</RootNamespace>
+    <AssemblyName>System.Web.Mvc3Ex</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <DefineConstants>MVC3</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug.4\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release.4|AnyCPU'">
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release.4\</OutputPath>
+    <DefineConstants>TRACE;CLR4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release.4\System.Web.Mvc3Ex.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
+    <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net40\System.CoreEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs">
+      <Link>Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\DataAnnotationsModelMetadataProviderEx.cs">
+      <Link>Web\Mvc+DataAnnotations\DataAnnotationsModelMetadataProviderEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\FieldViewModifierAttributeBase.cs">
+      <Link>Web\Mvc+DataAnnotations\FieldViewModifierAttributeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\IInputViewModifier.cs">
+      <Link>Web\Mvc+DataAnnotations\IInputViewModifier.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\ILabelViewModifier.cs">
+      <Link>Web\Mvc+DataAnnotations\ILabelViewModifier.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\ModelMetadataModifierArguments.cs">
+      <Link>Web\Mvc+DataAnnotations\ModelMetadataModifierArguments.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\ModelMetadataModifierAttributeBase.cs">
+      <Link>Web\Mvc+DataAnnotations\ModelMetadataModifierAttributeBase.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\MvcExtensions+FieldViewModifier.cs">
+      <Link>Web\Mvc+DataAnnotations\MvcExtensions+FieldViewModifier.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+DataAnnotations\MvcExtensions+ModelMetadata.cs">
+      <Link>Web\Mvc+DataAnnotations\MvcExtensions+ModelMetadata.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\ControllerExtensions.cs">
+      <Link>Web\Mvc+Dynamic\ControllerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\HtmlHelperEx.cs">
+      <Link>Web\Mvc+Dynamic\HtmlHelperEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\Html\ChildActionExtensionsEx.cs">
+      <Link>Web\Mvc+Dynamic\Html\ChildActionExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\Html\FormExtensionsEx.cs">
+      <Link>Web\Mvc+Dynamic\Html\FormExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\Html\LinkExtensionsEx.cs">
+      <Link>Web\Mvc+Dynamic\Html\LinkExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\RedirectToRouteResultEx.cs">
+      <Link>Web\Mvc+Dynamic\RedirectToRouteResultEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\RouteValuesHelpers.cs">
+      <Link>Web\Mvc+Dynamic\RouteValuesHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\UrlHelperEx.cs">
+      <Link>Web\Mvc+Dynamic\UrlHelperEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Dynamic\UrlHelperExtensions.cs">
+      <Link>Web\Mvc+Dynamic\UrlHelperExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html+ViewModifier\InputExtensionsEx.cs">
+      <Link>Web\Mvc+Forms\Html+ViewModifier\InputExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html+ViewModifier\LabelExtensionsEx.cs">
+      <Link>Web\Mvc+Forms\Html+ViewModifier\LabelExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html+ViewModifier\SelectExtensionsEx.cs">
+      <Link>Web\Mvc+Forms\Html+ViewModifier\SelectExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html+ViewModifier\TextAreaExtensionsEx.cs">
+      <Link>Web\Mvc+Forms\Html+ViewModifier\TextAreaExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html\SelectExtensionsEx.cs">
+      <Link>Web\Mvc+Forms\Html\SelectExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Forms\Html\SelectListLayout.cs">
+      <Link>Web\Mvc+Forms\Html\SelectListLayout.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+IndirectView\IndirectViewDirector.cs">
+      <Link>Web\Mvc+IndirectView\IndirectViewDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+IndirectView\IndirectWebFormViewEngine.cs">
+      <Link>Web\Mvc+IndirectView\IndirectWebFormViewEngine.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+IndirectView\MobileIndirectViewDirector.cs">
+      <Link>Web\Mvc+IndirectView\MobileIndirectViewDirector.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Route\MvcRouteExtensions+MvcRouteHandler.cs">
+      <Link>Web\Mvc+Route\MvcRouteExtensions+MvcRouteHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+Route\MvcRouteExtensions+RouteCollection.cs">
+      <Link>Web\Mvc+Route\MvcRouteExtensions+RouteCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\AreaRegistrationContextEx.cs">
+      <Link>Web\Mvc\AreaRegistrationContextEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\Html+HtmlTextEditor\IHtmlTextEditor.cs">
+      <Link>Web\Mvc\Html+HtmlTextEditor\IHtmlTextEditor.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\Html+HtmlTextEditor\TextAreaExtensionsEx.cs">
+      <Link>Web\Mvc\Html+HtmlTextEditor\TextAreaExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\Html\ChildActionExtensionsEx.cs">
+      <Link>Web\Mvc\Html\ChildActionExtensionsEx.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\Html\TabBuilderExtensions.cs">
+      <Link>Web\Mvc\Html\TabBuilderExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\MvcExtensions+HtmlHelper.cs">
+      <Link>Web\Mvc\MvcExtensions+HtmlHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\MvcExtensions+ModelState.cs">
+      <Link>Web\Mvc\MvcExtensions+ModelState.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\MvcExtensions+TagBuilder.cs">
+      <Link>Web\Mvc\MvcExtensions+TagBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\ObservableResult.cs">
+      <Link>Web\Mvc\ObservableResult.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\PathHelpers.cs">
+      <Link>Web\Mvc\PathHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\ResourceFileStreamResult.cs">
+      <Link>Web\Mvc\ResourceFileStreamResult.cs</Link>
+    </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\_Unsorted_\Web\Mvc+JQuery\JQueryHtmlHelperExtensions.cs">
+      <Link>_Unsorted_\Web\Mvc+JQuery\JQueryHtmlHelperExtensions.cs</Link>
+    </Compile>
+    <Compile Include="AssemblyRef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\nuspecs\BclEx-Web.Mvc3.nuspec">
+      <Link>BclEx-Web.Mvc3.nuspec</Link>
+    </None>
+    <None Include="BclEx.4.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System.WebEx\System.WebEx.csproj">
+      <Project>{B00BAA8C-C9D5-407D-A922-E6B829370C6C}</Project>
+      <Name>System.WebEx</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
