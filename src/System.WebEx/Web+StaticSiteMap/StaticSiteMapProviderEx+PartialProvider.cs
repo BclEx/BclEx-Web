@@ -58,7 +58,7 @@ namespace System.Web
             if (_partialProviders != null)
             {
                 PartialProvider tightestValue;
-                var hasTightestValue = _partialProviders.TryGetTightestMatch(segments, out tightestValue);
+                var hasTightestValue = TryGetTightestMatch(_partialProviders, segments, out tightestValue);
                 if (hasTightestValue)
                 {
                     _partialProviderRwLock.ExitReadLock();
@@ -97,5 +97,41 @@ namespace System.Web
             var newUrl = "/" + string.Join("/", segments, tightestSegmentsLength, segments.Length - tightestSegmentsLength);
             return siteMapProvider.FindSiteMapNode(newUrl);
         }
+
+        // pulled here for optimizing
+        #region TryGetTightestMatch (optimizing)
+
+        private static bool TryGetTightestMatch(List<PartialProvider> source, string[] segments, out PartialProvider tightestValue)
+        {
+            tightestValue = null;
+            int tightestValuesLength = 0;
+            foreach (var item in source)
+            {
+                var itemValues = item.Value;
+                int itemValuesLength;
+                if (Match(itemValues, segments) && (itemValuesLength = itemValues.Length) > tightestValuesLength)
+                {
+                    tightestValue = item;
+                    tightestValuesLength = itemValuesLength;
+                }
+            }
+            return (tightestValuesLength > 0);
+        }
+
+        private static bool Match<TSource>(TSource[] left, TSource[] right)
+        {
+            if (left == null || right == null)
+                return (left == null && right == null);
+            for (int index = 0; index < left.Length; index++)
+            {
+                var leftValue = left[index];
+                var rightValue = right[index];
+                if ((leftValue == null && rightValue != null) || (leftValue != null && rightValue == null) || !leftValue.Equals(rightValue))
+                    return false;
+            }
+            return true;
+        }
+
+        #endregion
     }
 }
