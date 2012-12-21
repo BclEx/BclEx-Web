@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MVC2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -31,7 +31,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug.4\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CLR4</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MVC2;CLR4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -41,7 +41,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;MVC2</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\System.Web.Mvc2Ex.xml</DocumentationFile>
@@ -53,7 +53,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release.4\</OutputPath>
-    <DefineConstants>TRACE;CLR4</DefineConstants>
+    <DefineConstants>TRACE;MVC2;CLR4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release.4\System.Web.Mvc2Ex.xml</DocumentationFile>
@@ -90,6 +90,8 @@
     <Reference Include="System.Web.Routing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="+Kludge\WebPages\RequestExtensions.cs" />
+    <Compile Include="+Kludge\Web\Mvc\UrlHelperExtensions.cs" />
     <Compile Include="AssemblyRef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs" />
@@ -110,29 +112,30 @@
     <Compile Include="Web\Mvc+Dynamic\RouteValuesHelpers.cs" />
     <Compile Include="Web\Mvc+Dynamic\UrlHelperEx.cs" />
     <Compile Include="Web\Mvc+Dynamic\UrlHelperExtensions.cs" />
+    <Compile Include="Web\Mvc+Forms\SelectListGroupedItem.cs" />
     <Compile Include="Web\Mvc+Forms\Html+ViewModifier\InputExtensionsEx.cs" />
     <Compile Include="Web\Mvc+Forms\Html+ViewModifier\LabelExtensionsEx.cs" />
     <Compile Include="Web\Mvc+Forms\Html+ViewModifier\SelectExtensionsEx.cs" />
     <Compile Include="Web\Mvc+Forms\Html+ViewModifier\TextAreaExtensionsEx.cs" />
     <Compile Include="Web\Mvc+Forms\Html\SelectExtensionsEx.cs" />
     <Compile Include="Web\Mvc+Forms\Html\SelectListLayout.cs" />
-    <Compile Include="Web\Mvc\Html+HtmlTextEditor\IHtmlTextEditor.cs" />
-    <Compile Include="Web\Mvc\Html+HtmlTextEditor\TextAreaExtensionsEx.cs" />
+    <Compile Include="+Kludge\Web\Mvc\HtmlHelperKludge.cs" />
+    <Compile Include="Web\Mvc+HtmlTextEditor\Html\IHtmlTextEditor.cs" />
+    <Compile Include="Web\Mvc+HtmlTextEditor\Html\TextAreaExtensionsEx.cs" />
     <Compile Include="_Unsorted_\Web\Mvc+JQuery\JQueryHtmlHelperExtensions.cs" />
     <Compile Include="Web\Mvc+Route\MvcRouteExtensions+MvcRouteHandler.cs" />
     <Compile Include="Web\Mvc+Route\MvcRouteExtensions+RouteCollection.cs" />
     <Compile Include="Web\Mvc\AreaRegistrationContextEx.cs" />
-    <Compile Include="Web\Mvc\MvcExtensions+HtmlHelper.cs" />
-    <Compile Include="Web\Mvc\Html\ChildActionExtensionsEx.cs" />
-    <Compile Include="Web\Mvc\Html\TabBuilderExtensions.cs" />
+    <Compile Include="+Kludge\Web\Mvc\MvcExtensions+HtmlHelper.cs" />
+    <Compile Include="+Kludge\Web\Mvc\Html\TagBuilderExtensions.cs" />
     <Compile Include="Web\Mvc+IndirectView\IndirectViewDirector.cs" />
     <Compile Include="Web\Mvc+IndirectView\IndirectWebFormViewEngine.cs" />
     <Compile Include="Web\Mvc+IndirectView\MobileIndirectViewDirector.cs" />
-    <Compile Include="Web\Mvc\MvcExtensions+ModelState.cs" />
+    <Compile Include="+Kludge\Web\Mvc\MvcExtensions+ModelState.cs" />
     <Compile Include="Web\Mvc\ObservableResult.cs" />
-    <Compile Include="Web\Mvc\PathHelpers.cs" />
+    <Compile Include="+Kludge\Web\Mvc\PathHelpers.cs" />
     <Compile Include="Web\Mvc\ResourceFileStreamResult.cs" />
-    <Compile Include="Web\Mvc\MvcExtensions+TagBuilder.cs" />
+    <Compile Include="+Kludge\Web\Mvc\MvcExtensions+TagBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\nuspecs\BclEx-Web.Mvc2.nuspec">

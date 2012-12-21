@@ -26,6 +26,9 @@ THE SOFTWARE.
 using System.Linq.Expressions;
 using System.Collections.Generic;
 using System.Web.Routing;
+#if !MVC2
+using HtmlHelperKludge = System.Web.Mvc.HtmlHelper;
+#endif
 namespace System.Web.Mvc.Html
 {
     public static partial class SelectExtensionsEx
@@ -61,7 +64,7 @@ namespace System.Web.Mvc.Html
         /// <param name="selectList">The select list.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString DropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return DropDownListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString DropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return DropDownListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Drops down list for ex.
         /// </summary>
@@ -84,7 +87,7 @@ namespace System.Web.Mvc.Html
         /// <param name="optionLabel">The option label.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString DropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, string optionLabel, object htmlAttributes) { return DropDownListForEx<TModel, TProperty>(htmlHelper, expression, selectList, optionLabel, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString DropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, string optionLabel, object htmlAttributes) { return DropDownListForEx<TModel, TProperty>(htmlHelper, expression, selectList, optionLabel, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Drops down list for ex.
         /// </summary>
@@ -125,7 +128,7 @@ namespace System.Web.Mvc.Html
         /// <param name="selectList">The select list.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ListBoxForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return ListBoxForEx<TModel, TProperty>(htmlHelper, expression, selectList, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString ListBoxForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return ListBoxForEx<TModel, TProperty>(htmlHelper, expression, selectList, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Lists the box for ex.
         /// </summary>
@@ -176,7 +179,7 @@ namespace System.Web.Mvc.Html
         /// <param name="selectList">The select list.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RadioButtonListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return RadioButtonListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString RadioButtonListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return RadioButtonListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Radioes the button list for ex.
         /// </summary>
@@ -239,7 +242,7 @@ namespace System.Web.Mvc.Html
         /// <param name="selectList">The select list.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString CheckBoxListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return CheckBoxListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString CheckBoxListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes) { return CheckBoxListForEx<TModel, TProperty>(htmlHelper, expression, selectList, null, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Checks the box list for ex.
         /// </summary>
@@ -269,6 +272,121 @@ namespace System.Web.Mvc.Html
             if (metadata != null && metadata.TryGetExtent<IEnumerable<IInputViewModifier>>(out modifier))
                 modifier.MapInputToHtmlAttributes(ref expression, ref htmlAttributes);
             return htmlHelper.CheckBoxListFor<TModel, TProperty>(expression, selectList, layout, htmlAttributes);
+        }
+
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList) { return GroupedDropDownListForEx(htmlHelper, expression, selectList, null, null); }
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, IDictionary<string, object> htmlAttributes) { return GroupedDropDownListForEx(htmlHelper, expression, selectList, null, htmlAttributes); }
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, object htmlAttributes) { return GroupedDropDownListForEx(htmlHelper, expression, selectList, null, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="optionLabel">The option label.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, string optionLabel) { return GroupedDropDownListForEx(htmlHelper, expression, selectList, optionLabel, null); }
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="optionLabel">The option label.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, string optionLabel, object htmlAttributes) { return GroupedDropDownListForEx(htmlHelper, expression, selectList, optionLabel, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        /// <summary>
+        /// Groupeds the drop down list for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="optionLabel">The option label.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedDropDownListForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, string optionLabel, IDictionary<string, object> htmlAttributes)
+        {
+            IEnumerable<IInputViewModifier> modifier;
+            var metadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>(expression, htmlHelper.ViewData);
+            if (metadata != null && metadata.TryGetExtent<IEnumerable<IInputViewModifier>>(out modifier))
+                modifier.MapInputToHtmlAttributes(ref expression, ref htmlAttributes);
+            return htmlHelper.GroupedDropDownListFor<TModel, TProperty>(expression, selectList, optionLabel, htmlAttributes);
+        }
+
+        /// <summary>
+        /// Groupeds the list box for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedListBoxForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList) { return GroupedListBoxForEx(htmlHelper, expression, selectList, null); }
+        /// <summary>
+        /// Groupeds the list box for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedListBoxForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, object htmlAttributes) { return GroupedListBoxForEx(htmlHelper, expression, selectList, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        /// <summary>
+        /// Groupeds the list box for ex.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <typeparam name="TProperty">The type of the property.</typeparam>
+        /// <param name="htmlHelper">The HTML helper.</param>
+        /// <param name="expression">The expression.</param>
+        /// <param name="selectList">The select list.</param>
+        /// <param name="htmlAttributes">The HTML attributes.</param>
+        /// <returns></returns>
+        public static MvcHtmlString GroupedListBoxForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListGroupedItem> selectList, IDictionary<string, object> htmlAttributes)
+        {
+            IEnumerable<IInputViewModifier> modifier;
+            var metadata = ModelMetadata.FromLambdaExpression<TModel, TProperty>(expression, htmlHelper.ViewData);
+            if (metadata != null && metadata.TryGetExtent<IEnumerable<IInputViewModifier>>(out modifier))
+                modifier.MapInputToHtmlAttributes(ref expression, ref htmlAttributes);
+            return htmlHelper.GroupedListBoxFor<TModel, TProperty>(expression, selectList, htmlAttributes);
         }
     }
 }

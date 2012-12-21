@@ -25,6 +25,9 @@ THE SOFTWARE.
 #endregion
 using System.Web.Routing;
 using System.Collections.Generic;
+#if !MVC2
+using HtmlHelperKludge = System.Web.Mvc.HtmlHelper;
+#endif
 namespace System.Web.Mvc.Html
 {
     /// <summary>
@@ -114,8 +117,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, null, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, null, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, null, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, null, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Actions the link ex.
         /// </summary>
@@ -125,7 +128,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, null, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, null, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Actions the link ex.
@@ -157,8 +160,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, controllerName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, controllerName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Actions the link ex.
         /// </summary>
@@ -169,7 +172,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, string controllerName, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Actions the link ex.
@@ -209,8 +212,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, x => linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Actions the link ex.
         /// </summary>
@@ -224,7 +227,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString ActionLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return ActionLinkEx(htmlHelper, linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Actions the link ex.
@@ -316,8 +319,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, new RouteValueDictionary(routeValues),  HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Routes the link ex.
         /// </summary>
@@ -326,7 +329,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Routes the link ex.
@@ -393,8 +396,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, routeName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, routeName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, routeName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, routeName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Routes the link ex.
         /// </summary>
@@ -404,7 +407,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, routeName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string routeName, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, routeName, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Routes the link ex.
@@ -441,8 +444,8 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
-        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, (Func<IDynamicNode, string>)null, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        //public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, string linkText, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, x => linkText, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Routes the link ex.
         /// </summary>
@@ -455,7 +458,7 @@ namespace System.Web.Mvc.Html
         /// <param name="routeValues">The route values.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes)); }
+        public static MvcHtmlString RouteLinkEx(this HtmlHelper htmlHelper, Func<IDynamicNode, string> linkText, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes) { return RouteLinkEx(htmlHelper, linkText, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
 
         /// <summary>
         /// Routes the link ex.

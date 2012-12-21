@@ -28,6 +28,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Collections.Generic;
 using System.Web.Routing;
+#if !MVC2
+using HtmlHelperKludge = System.Web.Mvc.HtmlHelper;
+#endif
 namespace System.Web.Mvc.Html
 {
     /// <summary>
@@ -76,7 +79,7 @@ namespace System.Web.Mvc.Html
         /// <param name="expression">The expression.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString LabelEx(this HtmlHelper htmlHelper, string expression, object htmlAttributes) { return LabelEx(htmlHelper, expression, (IDictionary<string, object>)new RouteValueDictionary(htmlAttributes), null); }
+        public static MvcHtmlString LabelEx(this HtmlHelper htmlHelper, string expression, object htmlAttributes) { return LabelEx(htmlHelper, expression, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes), null); }
         /// <summary>
         /// Labels the ex.
         /// </summary>
@@ -85,7 +88,7 @@ namespace System.Web.Mvc.Html
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <param name="metadataModifer">The metadata modifer.</param>
         /// <returns></returns>
-        public static MvcHtmlString LabelEx(this HtmlHelper htmlHelper, string expression, object htmlAttributes, Action<ModelMetadata> metadataModifer) { return LabelEx(htmlHelper, expression, (IDictionary<string, object>)new RouteValueDictionary(htmlAttributes), metadataModifer); }
+        public static MvcHtmlString LabelEx(this HtmlHelper htmlHelper, string expression, object htmlAttributes, Action<ModelMetadata> metadataModifer) { return LabelEx(htmlHelper, expression, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes), metadataModifer); }
 
         // LABELFOREX
         /// <summary>
@@ -136,7 +139,7 @@ namespace System.Web.Mvc.Html
         /// <param name="expression">The expression.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes) { return LabelForEx<TModel, TProperty>(htmlHelper, expression, (IDictionary<string, object>)new RouteValueDictionary(htmlAttributes), null); }
+        public static MvcHtmlString LabelForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes) { return LabelForEx<TModel, TProperty>(htmlHelper, expression, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes), null); }
         /// <summary>
         /// Labels for ex.
         /// </summary>
@@ -147,7 +150,7 @@ namespace System.Web.Mvc.Html
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <param name="metadataModifer">The metadata modifer.</param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes, Action<ModelMetadata> metadataModifer) { return LabelForEx<TModel, TProperty>(htmlHelper, expression, (IDictionary<string, object>)new RouteValueDictionary(htmlAttributes), metadataModifer); }
+        public static MvcHtmlString LabelForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes, Action<ModelMetadata> metadataModifer) { return LabelForEx<TModel, TProperty>(htmlHelper, expression, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes), metadataModifer); }
 
         // LABELFORMODELEX
         /// <summary>

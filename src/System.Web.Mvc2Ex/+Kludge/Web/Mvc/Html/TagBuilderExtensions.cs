@@ -24,18 +24,22 @@ THE SOFTWARE.
 */
 #endregion
 using System.Web.Routing;
-namespace System.Web.Mvc
+namespace System.Web.Mvc.Html
 {
-    public static partial class MvcExtensions
+    /// <summary>
+    /// TagBuilderExtensions
+    /// </summary>
+    public static class TagBuilderExtensions
     {
-        internal static void AddCssStyle(this TagBuilder tagBuilder, string id, string value)
+        /// <summary>
+        /// Toes the MVC HTML string.
+        /// </summary>
+        /// <param name="tagBuilder">The tag builder.</param>
+        /// <param name="renderMode">The render mode.</param>
+        /// <returns></returns>
+        public static MvcHtmlString ToMvcHtmlString(this TagBuilder tagBuilder, TagRenderMode renderMode)
         {
-            string oldValue;
-            var attributes = tagBuilder.Attributes;
-            if (attributes.TryGetValue("class", out oldValue))
-                attributes["style"] = StringEx.Axb(id, ":", value) + "; " + oldValue;
-            else
-                attributes["style"] = StringEx.Axb(id, ":", value);
+            return MvcHtmlString.Create(tagBuilder.ToString(renderMode));
         }
     }
 }

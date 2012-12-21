@@ -76,12 +76,12 @@ namespace System.Web
             if (url == null)
                 throw new ArgumentNullException("url");
             if (url.IndexOf('\n') >= 0)
-                throw new ArgumentException(EnvironmentEx2.GetResourceString("Cannot_redirect_to_newline"));
+                throw new ArgumentException(EnvironmentEx.GetResourceString("Cannot_redirect_to_newline"));
             //if (_headersWritten)
             //    throw new HttpException(EnvironmentEx.GetResourceString("Cannot_redirect_after_headers_sent"));
             var page = (@this._context.Handler as Page);
             if ((page != null) && page.IsCallback)
-                throw new ApplicationException(EnvironmentEx2.GetResourceString("Redirect_not_allowed_in_callback"));
+                throw new ApplicationException(EnvironmentEx.GetResourceString("Redirect_not_allowed_in_callback"));
             //url = t.ApplyRedirectQueryStringIfRequired(url);
             //url = t.ApplyAppPathModifier(url);
             //url = t.ConvertToFullyQualifiedRedirectUrlIfRequired(url);
@@ -173,7 +173,7 @@ namespace System.Web
             if (data != null)
                 virtualPath = data.VirtualPath;
             if (string.IsNullOrEmpty(virtualPath))
-                throw new InvalidOperationException(EnvironmentEx2.GetResourceString("No_Route_Found_For_Redirect"));
+                throw new InvalidOperationException(EnvironmentEx.GetResourceString("No_Route_Found_For_Redirect"));
             t.Redirect(virtualPath, false, permanent);
         }
 

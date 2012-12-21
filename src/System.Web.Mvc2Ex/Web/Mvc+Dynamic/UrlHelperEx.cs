@@ -118,7 +118,7 @@ namespace System.Web.Mvc
             var port = string.Empty;
             var scheme = url.Scheme;
             if (string.Equals(protocol, scheme, StringComparison.OrdinalIgnoreCase))
-                port = (url.IsDefaultPort ? string.Empty : (":" + Convert.ToString(url.Port, CultureInfo.InvariantCulture)));
+                port = (url.IsDefaultPort ? string.Empty : ":" + Convert.ToString(url.Port, CultureInfo.InvariantCulture));
             return (protocol + Uri.SchemeDelimiter + hostName + port + dynamicUrl);
         }
     }

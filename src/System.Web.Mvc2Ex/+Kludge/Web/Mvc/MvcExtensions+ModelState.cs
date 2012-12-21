@@ -29,6 +29,9 @@ using System.Web.Script.Serialization;
 using System.Linq.Expressions;
 namespace System.Web.Mvc
 {
+    /// <summary>
+    /// MvcExtensions
+    /// </summary>
     public static partial class MvcExtensions
     {
         /// <summary>

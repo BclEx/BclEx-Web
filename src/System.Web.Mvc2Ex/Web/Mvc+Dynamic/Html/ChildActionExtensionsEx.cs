@@ -23,9 +23,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 #endregion
-using System.IO;
-using System.Web.Routing;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Web.Routing;
 namespace System.Web.Mvc.Html
 {
     /// <summary>
@@ -136,5 +139,77 @@ namespace System.Web.Mvc.Html
         {
 			ActionHelper(htmlHelper, actionName, controllerName, routeValues, htmlHelper.ViewContext.Writer);
         }
+
+        #region Action Executor
+
+        private static readonly MethodInfo _wrapForServerExecuteMethod = Type.GetType("System.Web.Mvc.HttpHandlerUtil, " + AssemblyRef.SystemWebMvc).GetMethod("WrapForServerExecute");
+
+        internal static void ActionHelper(HtmlHelper htmlHelper, string actionName, string controllerName, RouteValueDictionary routeValues, TextWriter textWriter)
+        {
+            if (htmlHelper == null)
+                throw new ArgumentNullException("htmlHelper");
+            if (string.IsNullOrEmpty(actionName))
+                throw new ArgumentException("Common_NullOrEmpty", "actionName");
+            var dictionary = routeValues;
+            routeValues = MergeDictionaries(new[] { routeValues, htmlHelper.ViewContext.RouteData.Values });
+            routeValues["action"] = actionName;
+            if (!string.IsNullOrEmpty(controllerName))
+                routeValues["controller"] = controllerName;
+            var flag = false;
+            // TODO: return out flag
+            var data = htmlHelper.RouteCollection.GetVirtualPathForArea(htmlHelper.ViewContext.RequestContext, null, routeValues); // out flag);
+            if (data == null)
+                throw new InvalidOperationException("Common_NoRouteMatched");
+#if !MVC2
+            if (flag)
+            {
+                routeValues.Remove("area");
+                if (dictionary != null)
+                    dictionary.Remove("area");
+                // TODO: get ChildActionValuesKey from internal
+                //if (dictionary != null)
+                //    routeValues[ChildActionValueProvider.ChildActionValuesKey] = new DictionaryValueProvider<object>(dictionary, CultureInfo.InvariantCulture);
+            }
+#else
+            if (flag)
+                routeValues.Remove("area");
+#endif
+            var routeData = CreateRouteData(data.Route, routeValues, data.DataTokens, htmlHelper.ViewContext);
+            var httpContext = htmlHelper.ViewContext.HttpContext;
+            var context = new RequestContext(httpContext, routeData);
+            var httpHandler = new ChildActionMvcHandler(context);
+            httpContext.Server.Execute((IHttpHandler)_wrapForServerExecuteMethod.Invoke(null, new object[] { httpHandler }), textWriter, true);
+        }
+
+        private static RouteData CreateRouteData(RouteBase route, RouteValueDictionary routeValues, RouteValueDictionary dataTokens, ViewContext parentViewContext)
+        {
+            var data = new RouteData();
+            foreach (KeyValuePair<string, object> pair in routeValues)
+                data.Values.Add(pair.Key, pair.Value);
+            foreach (KeyValuePair<string, object> pair2 in dataTokens)
+                data.DataTokens.Add(pair2.Key, pair2.Value);
+            data.Route = route;
+            data.DataTokens["ParentActionViewContext"] = parentViewContext;
+            return data;
+        }
+
+        private static RouteValueDictionary MergeDictionaries(params RouteValueDictionary[] dictionaries)
+        {
+            var dictionary = new RouteValueDictionary();
+            foreach (var dictionary2 in dictionaries.Where(d => d != null))
+                foreach (var pair in dictionary2)
+                    if (!dictionary.ContainsKey(pair.Key))
+                        dictionary.Add(pair.Key, pair.Value);
+            return dictionary;
+        }
+
+        internal class ChildActionMvcHandler : MvcHandler
+        {
+            public ChildActionMvcHandler(RequestContext context)
+                : base(context) { }
+            protected override void AddVersionHeader(HttpContextBase httpContext) { }
+        }
+
+        #endregion
     }
 }

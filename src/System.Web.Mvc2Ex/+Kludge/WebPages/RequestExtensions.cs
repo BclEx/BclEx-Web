@@ -23,23 +23,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 #endregion
-using System.Web.Routing;
-namespace System.Web.Mvc.Html
+#if MVC2
+namespace System.Web.WebPages
 {
     /// <summary>
-    /// TabBuilderExtensions
+    /// RequestExtensions
     /// </summary>
-    public static class TabBuilderExtensions
+    public static class RequestExtensions
     {
         /// <summary>
-        /// Toes the MVC HTML string.
+        /// Determines whether [is URL local to host] [the specified request].
         /// </summary>
-        /// <param name="tagBuilder">The tag builder.</param>
-        /// <param name="renderMode">The render mode.</param>
-        /// <returns></returns>
-        public static MvcHtmlString ToMvcHtmlString(this TagBuilder tagBuilder, TagRenderMode renderMode)
+        /// <param name="request">The request.</param>
+        /// <param name="url">The URL.</param>
+        /// <returns>
+        ///   <c>true</c> if [is URL local to host] [the specified request]; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsUrlLocalToHost(this HttpRequestBase request, string url)
         {
-            return MvcHtmlString.Create(tagBuilder.ToString(renderMode));
+            return (string.IsNullOrEmpty(url) ? false : (url[0] == '/' && (url.Length == 1 || (url[1] != '/' && url[1] != '\\'))) || ((url.Length > 1 && url[0] == '~') && url[1] == '/'));
         }
     }
 }
+#endif

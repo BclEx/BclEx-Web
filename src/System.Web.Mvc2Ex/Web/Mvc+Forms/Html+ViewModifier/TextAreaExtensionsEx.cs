@@ -27,6 +27,9 @@ using System.Linq.Expressions;
 using System.Collections.Generic;
 using System.Web.Routing;
 using System.Web.Mvc;
+#if !MVC2
+using HtmlHelperKludge = System.Web.Mvc.HtmlHelper;
+#endif
 namespace System.Web.Mvc.Html
 {
     public static partial class TextAreaExtensionsEx
@@ -49,7 +52,7 @@ namespace System.Web.Mvc.Html
         /// <param name="expression">The expression.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString TextAreaForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes) { return TextAreaForEx<TModel, TProperty>(htmlHelper, expression, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString TextAreaForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes) { return TextAreaForEx<TModel, TProperty>(htmlHelper, expression, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Texts the area for ex.
         /// </summary>
@@ -79,7 +82,7 @@ namespace System.Web.Mvc.Html
         /// <param name="columns">The columns.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcHtmlString TextAreaForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, int rows, int columns, object htmlAttributes) { return TextAreaForEx<TModel, TProperty>(htmlHelper, expression, rows, columns, ((IDictionary<string, object>)new RouteValueDictionary(htmlAttributes))); }
+        public static MvcHtmlString TextAreaForEx<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, int rows, int columns, object htmlAttributes) { return TextAreaForEx<TModel, TProperty>(htmlHelper, expression, rows, columns, (IDictionary<string, object>)HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Texts the area for ex.
         /// </summary>

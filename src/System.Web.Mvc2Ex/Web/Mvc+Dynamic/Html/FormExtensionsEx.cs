@@ -26,6 +26,9 @@ THE SOFTWARE.
 using System.Web.Routing;
 using System.Collections.Generic;
 using System.Reflection;
+#if !MVC2
+using HtmlHelperKludge = System.Web.Mvc.HtmlHelper;
+#endif
 namespace System.Web.Mvc.Html
 {
     /// <summary>
@@ -124,7 +127,7 @@ namespace System.Web.Mvc.Html
         /// <param name="method">The method.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcForm BeginFormEx(this HtmlHelper htmlHelper, string actionName, string controllerName, FormMethod method, object htmlAttributes) { return BeginFormEx(htmlHelper, actionName, controllerName, new RouteValueDictionary(), method, new RouteValueDictionary(htmlAttributes)); }
+        public static MvcForm BeginFormEx(this HtmlHelper htmlHelper, string actionName, string controllerName, FormMethod method, object htmlAttributes) { return BeginFormEx(htmlHelper, actionName, controllerName, new RouteValueDictionary(), method, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Begins the form ex.
         /// </summary>
@@ -145,7 +148,7 @@ namespace System.Web.Mvc.Html
         /// <param name="method">The method.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcForm BeginFormEx(this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues, FormMethod method, object htmlAttributes) { return BeginFormEx(htmlHelper, actionName, controllerName, new RouteValueDictionary(routeValues), method, new RouteValueDictionary(htmlAttributes)); }
+        public static MvcForm BeginFormEx(this HtmlHelper htmlHelper, string actionName, string controllerName, object routeValues, FormMethod method, object htmlAttributes) { return BeginFormEx(htmlHelper, actionName, controllerName, new RouteValueDictionary(routeValues), method, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Begins the form ex.
         /// </summary>
@@ -234,7 +237,7 @@ namespace System.Web.Mvc.Html
         /// <param name="method">The method.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcForm BeginRouteFormEx(this HtmlHelper htmlHelper, string routeName, FormMethod method, object htmlAttributes) { return BeginRouteFormEx(htmlHelper, routeName, new RouteValueDictionary(), method, new RouteValueDictionary(htmlAttributes)); }
+        public static MvcForm BeginRouteFormEx(this HtmlHelper htmlHelper, string routeName, FormMethod method, object htmlAttributes) { return BeginRouteFormEx(htmlHelper, routeName, new RouteValueDictionary(), method, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Begins the route form ex.
         /// </summary>
@@ -253,7 +256,7 @@ namespace System.Web.Mvc.Html
         /// <param name="method">The method.</param>
         /// <param name="htmlAttributes">The HTML attributes.</param>
         /// <returns></returns>
-        public static MvcForm BeginRouteFormEx(this HtmlHelper htmlHelper, string routeName, object routeValues, FormMethod method, object htmlAttributes) { return BeginRouteFormEx(htmlHelper, routeName, new RouteValueDictionary(routeValues), method, new RouteValueDictionary(htmlAttributes)); }
+        public static MvcForm BeginRouteFormEx(this HtmlHelper htmlHelper, string routeName, object routeValues, FormMethod method, object htmlAttributes) { return BeginRouteFormEx(htmlHelper, routeName, new RouteValueDictionary(routeValues), method, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
         /// <summary>
         /// Begins the route form ex.
         /// </summary>
@@ -278,6 +281,7 @@ namespace System.Web.Mvc.Html
         {
             htmlHelper.ViewContext.Writer.Write("</form>");
             htmlHelper.ViewContext.OutputClientValidation();
+            htmlHelper.ViewContext.FormContext = null; //:kludge
         }
 
         private static MvcForm FormHelper(HtmlHelper htmlHelper, string formAction, FormMethod method, IDictionary<string, object> htmlAttributes)
@@ -286,11 +290,16 @@ namespace System.Web.Mvc.Html
             builder.MergeAttributes<string, object>(htmlAttributes);
             builder.MergeAttribute("action", formAction);
             builder.MergeAttribute("method", HtmlHelper.GetFormMethodString(method), true);
-            if (htmlHelper.ViewContext.ClientValidationEnabled)
+#if !MVC2
+            var flag = (htmlHelper.ViewContext.ClientValidationEnabled && !htmlHelper.ViewContext.UnobtrusiveJavaScriptEnabled);
+#else
+            var flag = htmlHelper.ViewContext.ClientValidationEnabled;
+#endif
+            if (flag)
                 builder.GenerateId(((Func<string>)_formIdGeneratorPropertyInfo.GetValue(htmlHelper.ViewContext, null))());
             htmlHelper.ViewContext.Writer.Write(builder.ToString(TagRenderMode.StartTag));
             var form = new MvcForm(htmlHelper.ViewContext);
-            if (htmlHelper.ViewContext.ClientValidationEnabled)
+            if (flag)
                 htmlHelper.ViewContext.FormContext.FormId = builder.Attributes["id"];
             return form;
         }

@@ -30,7 +30,7 @@ namespace System.Web.Mvc
     /// <summary>
     /// HtmlHelperEx
     /// </summary>
-    internal class HtmlHelperEx
+    public partial class HtmlHelperEx
     {
         /// <summary>
         /// Generates the link.

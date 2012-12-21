@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{280147F3-912D-4D1E-9020-62859B3613DE}</ProjectGuid>
+    <ProjectGuid>{280147F3-912D-4D1E-9020-62859B3613DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>System</RootNamespace>
-    <AssemblyName>System.Web.Mvc3Ex</AssemblyName>
+    <AssemblyName>System.Web.Mvc4Ex</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug.4\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;MVC3;CLR4</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MVC4;CLR4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -32,10 +32,10 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release.4\</OutputPath>
-    <DefineConstants>TRACE;MVC3;CLR4</DefineConstants>
+    <DefineConstants>TRACE;MVC4;CLR4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release.4\System.Web.Mvc3Ex.xml</DocumentationFile>
+    <DocumentationFile>bin\Release.4\System.Web.Mvc4Ex.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyOriginatorKeyFile>BclEx.4.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -54,14 +54,24 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\WebPages\RequestExtensions.cs">
-      <Link>+Kludge\Web\WebPages\RequestExtensions.cs</Link>
+    <Compile Include="..\system.web.mvc2ex\+kludge\webpages\RequestExtensions.cs">
+      <Link>+Kludge\WebPages\RequestExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\HtmlHelperKludge.cs">
+    <Compile Include="..\system.web.mvc2ex\+kludge\web\mvc\HtmlHelperKludge.cs">
       <Link>+Kludge\Web\Mvc\HtmlHelperKludge.cs</Link>
     </Compile>
     <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\Html\TagBuilderExtensions.cs">
@@ -191,8 +201,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\nuspecs\BclEx-Web.Mvc3.nuspec">
-      <Link>BclEx-Web.Mvc3.nuspec</Link>
+    <None Include="..\..\nuspecs\BclEx-Web.Mvc4.nuspec">
+      <Link>BclEx-Web.Mvc4.nuspec</Link>
     </None>
     <None Include="BclEx.4.snk" />
     <None Include="packages.config" />

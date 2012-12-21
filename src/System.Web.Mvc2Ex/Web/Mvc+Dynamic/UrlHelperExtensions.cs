@@ -24,13 +24,12 @@ THE SOFTWARE.
 */
 #endregion
 using System.Web.Routing;
-using System.Globalization;
 namespace System.Web.Mvc
 {
     /// <summary>
     /// UrlHelperExtensions
     /// </summary>
-    public static class UrlHelperExtensions
+    public static partial class UrlHelperExtensions
     {
         /// <summary>
         /// Actions the ex.
@@ -161,5 +160,38 @@ namespace System.Web.Mvc
         /// <param name="hostName">Name of the host.</param>
         /// <returns></returns>
         public static string RouteUrlEx(this UrlHelper urlHelper, string routeName, RouteValueDictionary routeValues, string protocol, string hostName) { IDynamicNode node; return UrlHelperEx.GenerateUrl(out node, routeName, null, null, protocol, hostName, null, routeValues, urlHelper.RouteCollection, urlHelper.RequestContext, false); }
+
+#if MVC4
+        /// <summary>
+        /// HTTPs the route URL ex.
+        /// </summary>
+        /// <param name="urlHelper">The URL helper.</param>
+        /// <param name="routeName">Name of the route.</param>
+        /// <param name="routeValues">The route values.</param>
+        /// <returns></returns>
+        public static string HttpRouteUrlEx(this UrlHelper urlHelper, string routeName, object routeValues) { return HttpRouteUrlEx(urlHelper, routeName, new RouteValueDictionary(routeValues)); }
+        /// <summary>
+        /// HTTPs the route URL ex.
+        /// </summary>
+        /// <param name="urlHelper">The URL helper.</param>
+        /// <param name="routeName">Name of the route.</param>
+        /// <param name="routeValues">The route values.</param>
+        /// <returns></returns>
+        public static string HttpRouteUrlEx(this UrlHelper urlHelper, string routeName, RouteValueDictionary routeValues)
+        {
+            if (routeValues == null)
+            {
+                routeValues = new RouteValueDictionary();
+                routeValues.Add("httproute", true);
+            }
+            else
+            {
+                routeValues = new RouteValueDictionary(routeValues);
+                if (!routeValues.ContainsKey("httproute"))
+                    routeValues.Add("httproute", true);
+            }
+            IDynamicNode node; return UrlHelperEx.GenerateUrl(out node, routeName, null, null, null, null, null, routeValues, urlHelper.RouteCollection, urlHelper.RequestContext, false);
+        }
+#endif
     }
 }
