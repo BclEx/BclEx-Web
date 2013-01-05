@@ -570,27 +570,27 @@ namespace System.Web.Mvc.Html
 
         private static IEnumerable<SelectListItem> GetSelectData(this HtmlHelper htmlHelper, string name)
         {
-            object obj2 = null;
+            object selectList = null;
             if (htmlHelper.ViewData != null)
-                obj2 = htmlHelper.ViewData.Eval(name);
-            if (obj2 == null)
+                selectList = htmlHelper.ViewData.Eval(name);
+            if (selectList == null)
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_MissingSelectData", name, "IEnumerable<SelectListItem>"));
-            var enumerable = (obj2 as IEnumerable<SelectListItem>);
+            var enumerable = (selectList as IEnumerable<SelectListItem>);
             if (enumerable == null)
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_WrongSelectDataType", name, obj2.GetType().FullName, "IEnumerable<SelectListItem>"));
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_WrongSelectDataType", name, selectList.GetType().FullName, "IEnumerable<SelectListItem>"));
             return enumerable;
         }
 
         private static IEnumerable<SelectListGroupedItem> GetSelectGroupedData(this HtmlHelper htmlHelper, string name)
         {
-            object obj2 = null;
+            object selectList = null;
             if (htmlHelper.ViewData != null)
-                obj2 = htmlHelper.ViewData.Eval(name);
-            if (obj2 == null)
+                selectList = htmlHelper.ViewData.Eval(name);
+            if (selectList == null)
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_MissingSelectData", name, "IEnumerable<SelectListItem>"));
-            var enumerable = (obj2 as IEnumerable<SelectListGroupedItem>);
+            var enumerable = (selectList as IEnumerable<SelectListGroupedItem>);
             if (enumerable == null)
-                throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_WrongSelectDataType", name, obj2.GetType().FullName, "IEnumerable<SelectListItem>"));
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "MvcResources.HtmlHelper_WrongSelectDataType", name, selectList.GetType().FullName, "IEnumerable<SelectListItem>"));
             return enumerable;
         }
 
@@ -608,7 +608,7 @@ namespace System.Web.Mvc.Html
             }
             var defaultValue = (allowMultiple ? htmlHelper.GetModelStateValue(fullHtmlFieldName, typeof(string[])) : htmlHelper.GetModelStateValue(fullHtmlFieldName, typeof(string)));
             // If we haven't already used ViewData to get the entire list of items then we need to use the ViewData-supplied value before using the parameter-supplied value.
-            if (!usedViewData && defaultValue == null)
+            if (!usedViewData && defaultValue == null && !string.IsNullOrEmpty(name))
                 defaultValue = htmlHelper.ViewData.Eval(name);
             if (defaultValue != null)
                 selectList = GetSelectListWithDefaultValue(selectList, defaultValue, allowMultiple); //:kludge
@@ -647,7 +647,7 @@ namespace System.Web.Mvc.Html
             }
             var defaultValue = (allowMultiple ? htmlHelper.GetModelStateValue(fullHtmlFieldName, typeof(string[])) : htmlHelper.GetModelStateValue(fullHtmlFieldName, typeof(string)));
             // If we haven't already used ViewData to get the entire list of items then we need to use the ViewData-supplied value before using the parameter-supplied value.
-            if (!usedViewData && defaultValue == null && string.IsNullOrEmpty(name)) //:kludge
+            if (!usedViewData && defaultValue == null && !string.IsNullOrEmpty(name)) //:kludge
                 defaultValue = htmlHelper.ViewData.Eval(name);
             if (defaultValue != null)
                 selectList = GetSelectListWithDefaultValue(selectList, defaultValue, allowMultiple); //:kludge
@@ -752,6 +752,8 @@ namespace System.Web.Mvc.Html
         internal static string ListItemToOption(SelectListGroupedItem item)
         {
             var optionTag = new TagBuilder("option") { InnerHtml = HttpUtility.HtmlEncode(item.Text) };
+            if (item.HtmlAttributes != null)
+                optionTag.MergeAttributes(item.HtmlAttributes);
             if (item.Value != null)
                 optionTag.Attributes["value"] = item.Value;
             if (item.Selected)

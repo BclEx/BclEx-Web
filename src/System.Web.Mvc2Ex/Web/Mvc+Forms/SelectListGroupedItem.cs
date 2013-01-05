@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 #endregion
+using System.Collections.Generic;
 namespace System.Web.Mvc
 {
     /// <summary>
@@ -44,5 +45,12 @@ namespace System.Web.Mvc
         /// The group text.
         /// </value>
         public string GroupText { get; set; }
+        /// <summary>
+        /// Gets or sets the HTML attributes.
+        /// </summary>
+        /// <value>
+        /// The HTML attributes.
+        /// </value>
+        public IDictionary<string, object> HtmlAttributes { get; set; }
     }
 }
