@@ -488,6 +488,55 @@ namespace System.Web.Mvc.Html
             return SelectInternal(htmlHelper, metadata, optionLabel, name, selectList, false, htmlAttributes);
         }
 
+        /*
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name) { return EnumDropDownListHelper(htmlHelper, null, name, null, null); }
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name, string optionLabel) { return EnumDropDownListHelper(htmlHelper, null, name, optionLabel, null); }
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name, IDictionary<string, object> htmlAttributes) { return EnumDropDownListHelper(htmlHelper, null, name, null, htmlAttributes); }
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name, object htmlAttributes) { return EnumDropDownListHelper(htmlHelper, null, name, null, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name, string optionLabel, IDictionary<string, object> htmlAttributes) { return EnumDropDownListHelper(htmlHelper, null, name, optionLabel, htmlAttributes); }
+        public static MvcHtmlString EnumDropDownList(this HtmlHelper htmlHelper, string name, string optionLabel, object htmlAttributes) { return EnumDropDownListHelper(htmlHelper, null, name, optionLabel, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression) { return EnumDropDownListFor(htmlHelper, expression, null, null); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IDictionary<string, object> htmlAttributes) { return EnumDropDownListFor(htmlHelper, expression, null, htmlAttributes); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes) { return EnumDropDownListFor(htmlHelper, expression, null, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string optionLabel) { return EnumDropDownListFor(htmlHelper, expression, optionLabel, null); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string optionLabel, object htmlAttributes) { return EnumDropDownListFor(htmlHelper, expression, optionLabel, HtmlHelperKludge.AnonymousObjectToHtmlAttributes(htmlAttributes)); }
+        public static MvcHtmlString EnumDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string optionLabel, IDictionary<string, object> htmlAttributes)
+        {
+            if (expression == null)
+                throw new ArgumentNullException("expression");
+            var metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData); //:kludge
+            return EnumDropDownListHelper(htmlHelper, metadata, ExpressionHelper.GetExpressionText(expression), optionLabel, htmlAttributes);
+        }
+
+        private static MvcHtmlString EnumDropDownListHelper(HtmlHelper htmlHelper, ModelMetadata metadata, string name, string optionLabel, IDictionary<string, object> htmlAttributes)
+        {
+            return null;
+            //Type enumType = GetNonNullableModelType(metadata);
+            //IEnumerable<TEnum> values = Enum.GetValues(enumType).Cast<TEnum>();
+
+            //TypeConverter converter = TypeDescriptor.GetConverter(enumType);
+
+            //IEnumerable<SelectListItem> items =
+            //    from value in values
+            //    select new SelectListItem
+            //    {
+            //        Text = converter.ConvertToString(value),
+            //        Value = value.ToString(),
+            //        Selected = value.Equals(metadata.Model)
+            //    };
+
+            //if (metadata.IsNullableValueType)
+            //{
+            //    items = SingleEmptyItem.Concat(items);
+            //}
+
+            //return htmlHelper.DropDownListFor(
+            //    expression,
+            //    items
+            //    );
+        }
+        */
+
         /// <summary>
         /// Groupeds the list box.
         /// </summary>
