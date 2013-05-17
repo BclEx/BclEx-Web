@@ -70,9 +70,11 @@ namespace System.Web.Mvc
             if ((wantsSecure && r.IsSecureConnection) || (!wantsSecure && !r.IsSecureConnection))
                 return;
             // build new uri
-            var uriBuilder = new UriBuilder(r.Url);
-            uriBuilder.Scheme = (wantsSecure ? "https" : "http");
-            uriBuilder.Port = -1;
+            var uriBuilder = new UriBuilder(r.Url)
+            {
+                Scheme = (wantsSecure ? "https" : "http"),
+                Port = -1,
+            };
             // append session query part
             var sessionQueryPart = GetSessionQueryPart();
             if (!string.IsNullOrEmpty(sessionQueryPart))

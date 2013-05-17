@@ -65,6 +65,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\BclEx-Abstract.1.0.0\lib\net35\System.Abstract.dll</HintPath>
     </Reference>
+    <Reference Include="System.Abstract.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BclEx-Abstract.1.0.0\lib\net35\System.Abstract.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Contoso.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=725aceb8081535f0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\BclEx-Extend.1.0.0\lib\net35\Contoso.CoreEx.dll</HintPath>
@@ -78,6 +82,10 @@
     <Reference Include="System.Abstract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Abstract.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.Core.dll</HintPath>
     </Reference>
     <Reference Include="Contoso.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -121,8 +129,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\nuspecs\BclEx-Custom.DEG.Web.nuspec">
-      <Link>BclEx-Custom.DEG.Web.nuspec</Link>
+    <None Include="..\..\..\nuspecs\BclEx-Custom.DEG.Web.nuspec_">
+      <Link>BclEx-Custom.DEG.Web.nuspec_</Link>
     </None>
     <None Include="BclEx.4.snk" />
     <None Include="BclEx.snk" />

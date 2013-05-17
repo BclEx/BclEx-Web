@@ -74,8 +74,8 @@
     <EmbeddedResource Include="Resource_\FatPipe.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\nuspecs\BclEx-Practices.FatPipe.nuspec">
-      <Link>BclEx-Practices.FatPipe.nuspec</Link>
+    <None Include="..\..\..\nuspecs\BclEx-Practices.FatPipe.nuspec_">
+      <Link>BclEx-Practices.FatPipe.nuspec_</Link>
     </None>
     <None Include="BclEx.4.snk" />
     <None Include="BclEx.snk" />

@@ -44,6 +44,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.dll</HintPath>
     </Reference>
+    <Reference Include="System.Abstract.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BclEx-Abstract.1.0.0\lib\net40\System.Abstract.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System.CoreEx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=28bb8282d82eb63f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\BclEx-Extend.1.0.0\lib\net40\System.CoreEx.dll</HintPath>
@@ -68,29 +72,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\system.web.mvc2ex\+kludge\webpages\RequestExtensions.cs">
-      <Link>+Kludge\WebPages\RequestExtensions.cs</Link>
+    <Compile Include="..\system.web.mvc2ex\+Polyfill\webpages\RequestExtensions.cs">
+      <Link>+Polyfill\WebPages\RequestExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\system.web.mvc2ex\+kludge\web\mvc\HtmlHelperKludge.cs">
-      <Link>+Kludge\Web\Mvc\HtmlHelperKludge.cs</Link>
+    <Compile Include="..\system.web.mvc2ex\+Polyfill\web\mvc\HtmlHelperKludge.cs">
+      <Link>+Polyfill\Web\Mvc\HtmlHelperKludge.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\Html\TagBuilderExtensions.cs">
-      <Link>+Kludge\Web\Mvc\Html\TagBuilderExtensions.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\Html\TagBuilderExtensions.cs">
+      <Link>+Polyfill\Web\Mvc\Html\TagBuilderExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\MvcExtensions+HtmlHelper.cs">
-      <Link>+Kludge\Web\Mvc\MvcExtensions+HtmlHelper.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\MvcExtensions+HtmlHelper.cs">
+      <Link>+Polyfill\Web\Mvc\MvcExtensions+HtmlHelper.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\MvcExtensions+ModelState.cs">
-      <Link>+Kludge\Web\Mvc\MvcExtensions+ModelState.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\MvcExtensions+ModelState.cs">
+      <Link>+Polyfill\Web\Mvc\MvcExtensions+ModelState.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\MvcExtensions+TagBuilder.cs">
-      <Link>+Kludge\Web\Mvc\MvcExtensions+TagBuilder.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\MvcExtensions+TagBuilder.cs">
+      <Link>+Polyfill\Web\Mvc\MvcExtensions+TagBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\PathHelpers.cs">
-      <Link>+Kludge\Web\Mvc\PathHelpers.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\PathHelpers.cs">
+      <Link>+Polyfill\Web\Mvc\PathHelpers.cs</Link>
     </Compile>
-    <Compile Include="..\System.Web.Mvc2Ex\+Kludge\Web\Mvc\UrlHelperExtensions.cs">
-      <Link>+Kludge\Web\Mvc\UrlHelperExtensions.cs</Link>
+    <Compile Include="..\System.Web.Mvc2Ex\+Polyfill\Web\Mvc\UrlHelperExtensions.cs">
+      <Link>+Polyfill\Web\Mvc\UrlHelperExtensions.cs</Link>
     </Compile>
     <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs">
       <Link>Web\Mvc+ActionFilters\EnsureRequestUriSchemeAttribute.cs</Link>
