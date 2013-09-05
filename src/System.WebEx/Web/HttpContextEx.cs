@@ -62,7 +62,7 @@ namespace System.Web
 
         private static IEnumerable<string> GetAssemblyFiles()
         {
-            var path = HostingEnvironment.IsHosted ? HttpRuntime.BinDirectory : Path.GetDirectoryName(typeof(HttpContextEx).Assembly.Location);
+            var path = (HostingEnvironment.IsHosted ? HttpRuntime.BinDirectory : Path.GetDirectoryName(typeof(HttpContextEx).Assembly.Location));
             return Directory.GetFiles(path, "*.dll");
         }
 
@@ -81,10 +81,8 @@ namespace System.Web
                             if (HostingEnvironment.IsHosted && BuildManager.CodeAssemblies != null)
                                 _assemblies.AddRange(BuildManager.CodeAssemblies.OfType<Assembly>());
                             foreach (var c in GetAssemblyFiles())
-                            {
                                 try { assemblies.Add(Assembly.LoadFrom(c)); }
                                 catch { }
-                            }
                             _assemblies = assemblies.Except(IgnoredAssemblies)
                                 .ToList();
                         }

@@ -41,8 +41,9 @@ namespace System.Web
     public class ActivationManager
     {
         private static bool _hasInited;
-        private static readonly List<Assembly> _assemblies = HttpContextEx.Assemblies.ToList();
+        private static List<Assembly> _assemblies;
 
+#if CLR4
         /// <summary>
         /// InitDisposeCallingModule
         /// </summary>
@@ -72,6 +73,7 @@ namespace System.Web
                         ActivationManager.RunPostStartMethods();
             }
         }
+#endif
 
         /// <summary>
         /// Adds the assemblies.
@@ -81,8 +83,17 @@ namespace System.Web
         {
             if (assemblies == null)
                 throw new ArgumentNullException("assemblies");
-            var newAssemblies = assemblies.Except(_assemblies).ToArray();
-            _assemblies.AddRange(newAssemblies);
+            Assembly[] newAssemblies;
+            if (_assemblies != null)
+            {
+                newAssemblies = assemblies.Except(_assemblies).ToArray();
+                _assemblies.AddRange(newAssemblies);
+            }
+            else
+            {
+                newAssemblies = assemblies;
+                _assemblies = new List<Assembly>(newAssemblies);
+            }
             if (_hasInited)
             {
                 RunActivationMethods<PreApplicationStartMethodAttribute>(newAssemblies, x => InvokeMethod((PreApplicationStartMethodAttribute)x));
@@ -167,6 +178,7 @@ namespace System.Web
         private static void LoadFromConfiguration()
         {
             var section = WebExSection.GetSection();
+            _assemblies = (section.CodeAssemblies ? (List<Assembly>)HttpContextEx.Assemblies : new List<Assembly>());
             ActivationAssemblies = section.ActivationAssemblies
                 .Cast<ConfigurationElementCollectionEx.AssemblyElement>()
                 .Select(x => x.Assembly)

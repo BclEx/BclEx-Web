@@ -59,7 +59,20 @@ namespace System.Web.Configuration
 
         internal static WebExSection GetSection()
         {
-            return ConfigurationManagerEx.GetSection<WebExSection>("webEx");
+            return ConfigurationManagerEx.GetSection<WebExSection>("webEx", false);
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [code assemblies].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [code assemblies]; otherwise, <c>false</c>.
+        /// </value>
+        [ConfigurationProperty("codeAssemblies", DefaultValue = false)]
+        public bool CodeAssemblies
+        {
+            get { return (bool)this["codeAssemblies"]; }
+            set { this["codeAssemblies"] = value; }
         }
     }
 }
