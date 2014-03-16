@@ -45,11 +45,6 @@ namespace System.Web
         private static List<Assembly> _assemblies;
         private static object _lock = new object();
 
-        static HttpContextEx()
-        {
-            LoadFromConfiguration();
-        }
-
         /// <summary>
         /// Gets the is absolute URL.
         /// </summary>
@@ -83,8 +78,7 @@ namespace System.Web
                             foreach (var c in GetAssemblyFiles())
                                 try { assemblies.Add(Assembly.LoadFrom(c)); }
                                 catch { }
-                            _assemblies = assemblies.Except(IgnoredAssemblies)
-                                .ToList();
+                            _assemblies = (IgnoredAssemblies != null ? assemblies.Except(IgnoredAssemblies).ToList() : assemblies);
                         }
                 return _assemblies;
             }
@@ -94,18 +88,5 @@ namespace System.Web
         /// Gets the ignored assemblies.
         /// </summary>
         public static IEnumerable<Assembly> IgnoredAssemblies { get; private set; }
-
-        private static void LoadFromConfiguration()
-        {
-            try
-            {
-                var section = WebExSection.GetSection();
-                IgnoredAssemblies = section.IgnoredAssemblies
-                    .Cast<ConfigurationElementCollectionEx.AssemblyElement>()
-                    .Select(x => x.Assembly)
-                    .ToList();
-            }
-            catch { }
-        }
     }
 }

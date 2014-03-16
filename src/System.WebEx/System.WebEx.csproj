@@ -101,7 +101,6 @@
     <Compile Include="+Polyfill\Web\HttpEncoderUtility.cs" />
     <Compile Include="+Polyfill\Web\HttpResponseKludge.cs" />
     <Compile Include="AssemblyRef.cs" />
-    <Compile Include="Web+Activation\Handlers\ActivationModule.cs" />
     <Compile Include="Web+Routing\IDynamicNode.cs" />
     <Compile Include="Web+Routing\IDynamicRoutingContext.cs" />
     <Compile Include="Web+Routing\Routing+Dynamic\DynamicRoute.cs" />
@@ -132,7 +131,6 @@
     <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+PartialProvider.cs" />
     <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx+Scan.cs" />
     <Compile Include="Web+StaticSiteMap\StaticSiteMapProviderEx.cs" />
-    <Compile Include="Web\Configuration\WebExSection.cs" />
     <Compile Include="Web\Configuration\CustomErrorsSectionSyn.cs" />
     <Compile Include="Web\Configuration\CustomErrorSyn.cs" />
     <Compile Include="Web\HttpCompressModule.cs" />
@@ -201,10 +199,6 @@
     <Compile Include="Web\UI\CachingUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Web+Activation\ActivationManager.cs" />
-    <Compile Include="Web+Activation\ApplicationShutdownMethodAttribute.cs" />
-    <Compile Include="Web+Activation\PostApplicationStartMethodAttribute.cs" />
-    <Compile Include="Web+Activation\PreApplicationStartMethodAttribute.cs" />
     <Compile Include="Web\UI\IFragmentedControl.cs" />
     <Compile Include="_Unsorted_\WebResourceRegex.cs" />
   </ItemGroup>
