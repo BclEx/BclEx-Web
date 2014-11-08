@@ -130,6 +130,7 @@
     <Compile Include="+Polyfill\Web\Mvc\HtmlHelperKludge.cs" />
     <Compile Include="Web\Mvc+HtmlTextEditor\Html\IHtmlTextEditor.cs" />
     <Compile Include="Web\Mvc+HtmlTextEditor\Html\TextAreaExtensionsEx.cs" />
+    <Compile Include="Web\Mvc\Html\UIExtensionsEx.cs" />
     <Compile Include="_Unsorted_\Web\Mvc+JQuery\JQueryHtmlHelperExtensions.cs" />
     <Compile Include="Web\Mvc+Route\MvcRouteExtensions+MvcRouteHandler.cs" />
     <Compile Include="Web\Mvc+Route\MvcRouteExtensions+RouteCollection.cs" />

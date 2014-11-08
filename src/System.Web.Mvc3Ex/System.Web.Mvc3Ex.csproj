@@ -185,6 +185,9 @@
     <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\AreaRegistrationContextEx.cs">
       <Link>Web\Mvc\AreaRegistrationContextEx.cs</Link>
     </Compile>
+    <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\Html\UIExtensionsEx.cs">
+      <Link>Web\Mvc\Html\UIExtensionsEx.cs</Link>
+    </Compile>
     <Compile Include="..\System.Web.Mvc2Ex\Web\Mvc\ObservableResult.cs">
       <Link>Web\Mvc\ObservableResult.cs</Link>
     </Compile>
