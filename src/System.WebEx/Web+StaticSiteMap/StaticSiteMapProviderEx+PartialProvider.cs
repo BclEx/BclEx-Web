@@ -31,10 +31,10 @@ namespace System.Web
 {
     public partial class StaticSiteMapProviderEx
     {
-        private List<PartialProvider> _partialProviders; // = new List<PartialProvider>();
+        private List<PartialProvider> _partialProviders;
         private ReaderWriterLockSlim _partialProviderRwLock = new ReaderWriterLockSlim();
 
-        private class PartialProvider : IValue<string[]>
+        private class PartialProvider
         {
             public string[] Value { get; set; }
             public SiteMapProvider SiteMapProvider { get; set; }
